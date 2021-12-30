@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         brand: ['Montserrat', 'sans-serif'],
       },
+      colors: {
+        brand: '#291507',
+      },
     },
   },
   plugins: [],

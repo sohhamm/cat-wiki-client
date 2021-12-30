@@ -21,12 +21,15 @@ const images = [
     name: 'Bengal',
     url: 'https://picsum.photos/220',
   },
+  // {
+  //   name: 'Macarena',
+  //   url: 'https://picsum.photos/220',
+  // },
 ]
 
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
 
-  console.log(searchText)
   return (
     <main className="font-brand">
       <div className="rounded-t-[42px] w-100% lg:bg-hero-lg md:bg-hero-md sm:bg-hero-sm h-auto object-contain border-current mt-10 pb-32 pt-4">
@@ -58,9 +61,9 @@ export default function Hero() {
       </div>
 
       <div className="rounded-b-[42px] bg-[#E3E1DC] px-[100px] pb-[98px]">
-        <p className="text-md py-[47px] text-[18px] font-medium">
+        <div className="text-md py-[47px] text-[18px] font-medium">
           Most Searched Breed <div className="h-1 w-[60px] bg-[#4D270C]" />
-        </p>
+        </div>
 
         <div className="flex justify-between items-center">
           <h1 className="text-[48px] leading-[60px] font-bold text-[#291507]">
@@ -73,11 +76,14 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="flex items-center justify-between mt-[46px]">
+        <div className="flex flex-nowrap items-center justify-between mt-[46px] gap-14 ">
           {images.map(image => (
-            <div className="">
-              <img src={image.url} className="object-fill rounded-[24px]" />
-              <figcaption className="text-[#291507 font-semibold text-xl mt-4">
+            <div key={image.name} className="">
+              <img
+                src={image.url}
+                className="rounded-[24px] min-w-[135px] min-h-[135px]"
+              />
+              <figcaption className="text-[#291507 font-semibold text-xl mt-4 z-">
                 {image.name}
               </figcaption>
             </div>
