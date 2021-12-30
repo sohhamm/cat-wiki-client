@@ -4,6 +4,25 @@ import {MdSearch} from 'react-icons/md'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-router-dom'
 
+const images = [
+  {
+    name: 'Name 1',
+    url: 'https://picsum.photos/220',
+  },
+  {
+    name: 'Name 2',
+    url: 'https://picsum.photos/220',
+  },
+  {
+    name: 'Street',
+    url: 'https://picsum.photos/220',
+  },
+  {
+    name: 'Bengal',
+    url: 'https://picsum.photos/220',
+  },
+]
+
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
 
@@ -38,18 +57,31 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="rounded-b-[42px] bg-[#E3E1DC] px-[100px]">
-        <p className="text-md py-[47px]">Most Searched Breed</p>
+      <div className="rounded-b-[42px] bg-[#E3E1DC] px-[100px] pb-[98px]">
+        <p className="text-md py-[47px] text-[18px] font-medium">
+          Most Searched Breed <div className="h-1 w-[60px] bg-[#4D270C]" />
+        </p>
 
         <div className="flex justify-between items-center">
-          <h1 className="text-[48px]">
+          <h1 className="text-[48px] leading-[60px] font-bold text-[#291507]">
             66+ Breeds For you <br /> to discover
           </h1>
           <Link to="/breeds">
-            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px]">
+            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom">
               SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
             </p>
           </Link>
+        </div>
+
+        <div className="flex items-center justify-between mt-[46px]">
+          {images.map(image => (
+            <div className="">
+              <img src={image.url} className="object-fill rounded-[24px]" />
+              <figcaption className="text-[#291507 font-semibold text-xl mt-4">
+                {image.name}
+              </figcaption>
+            </div>
+          ))}
         </div>
       </div>
     </main>
