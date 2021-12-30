@@ -2,6 +2,7 @@ import * as React from 'react'
 import {ReactComponent as Logo} from '../../assets/svg/logo.svg'
 import {MdSearch} from 'react-icons/md'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
+import {Link} from 'react-router-dom'
 
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
@@ -44,10 +45,11 @@ export default function Hero() {
           <h1 className="text-[48px]">
             66+ Breeds For you <br /> to discover
           </h1>
-
-          <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px]">
-            SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
-          </p>
+          <Link to="/breeds">
+            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px]">
+              SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
+            </p>
+          </Link>
         </div>
       </div>
     </main>
