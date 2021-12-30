@@ -33,16 +33,17 @@ export default function Hero() {
   return (
     <main className="font-brand">
       <div className="rounded-t-[42px] w-100% lg:bg-hero-lg md:bg-hero-md sm:bg-hero-sm h-auto object-contain border-current mt-10 pb-32 pt-4">
-        <div className="flex-col ml-16 items-center py-24 mt-10 max-w-[400px]">
+        <div className="flex-col ml-24 items-center py-24 mt-8 max-w-[400px]">
           <Logo
-            width={'300px'}
-            height={'100px'}
+            width={'340'}
+            height={'200'}
             style={{
               color: 'white',
             }}
             stroke="currentColor"
-            fill="currentColor"
-            className="mb-2"
+            fill="#fffff"
+            // className="mb-[-1em]"
+            // viewBox={'0 0 128 43'}
           />
           <h2 className="text-white">Get to know more about your cat breed</h2>
           <div className="absolute mt-12">
