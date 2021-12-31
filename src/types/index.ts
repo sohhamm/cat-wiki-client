@@ -1,5 +1,5 @@
 export type FetcherType = (
   url: string,
-  method: string,
-  payload: object,
+  method?: string,
+  payload?: object,
 ) => Promise<any>

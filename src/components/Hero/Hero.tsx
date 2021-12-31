@@ -3,6 +3,7 @@ import {ReactComponent as Logo} from '../../assets/svg/logo.svg'
 import {MdSearch} from 'react-icons/md'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-router-dom'
+import {getSearchedBreeds} from '../../data/data'
 
 const images = [
   {
@@ -28,11 +29,23 @@ const images = [
 ]
 
 export default function Hero() {
+  const [searchResults, setSearchResults] = React.useState(null)
+  const [isLoading, setIsLoading] = React.useState(false)
   const [searchText, setSearchText] = React.useState('')
 
   React.useEffect(() => {
     if (!searchText.length) return
+    getSearchResults(searchText)
   }, [searchText])
+
+  const getSearchResults = async (query: string) => {
+    setIsLoading(true)
+    const data = await getSearchedBreeds(query)
+    setSearchResults(data)
+    setIsLoading(false)
+  }
+
+  console.log({searchResults})
 
   return (
     <main className="font-brand">

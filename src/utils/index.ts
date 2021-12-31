@@ -1,6 +1,6 @@
 import {FetcherType} from '../types'
 
-export const URL = import.meta.env.VITE_APP_URL
+export const URL = `${import.meta.env.VITE_APP_URL}/api/cats`
 
 export const fetcher: FetcherType = async (url, method = 'GET', payload) => {
   try {
