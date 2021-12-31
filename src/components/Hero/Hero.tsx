@@ -22,10 +22,6 @@ const images = [
     name: 'Bengal',
     url: 'https://picsum.photos/220',
   },
-  // {
-  //   name: 'Macarena',
-  //   url: 'https://picsum.photos/220',
-  // },
 ]
 
 export default function Hero() {
@@ -59,8 +55,6 @@ export default function Hero() {
             }}
             stroke="currentColor"
             fill="#fffff"
-            // className="mb-[-1em]"
-            // viewBox={'0 0 128 43'}
           />
           <h2 className="text-white">Get to know more about your cat breed</h2>
           <div className="absolute mt-12">
