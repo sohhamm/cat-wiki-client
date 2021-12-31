@@ -30,6 +30,10 @@ const images = [
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
 
+  React.useEffect(() => {
+    if (!searchText.length) return
+  }, [searchText])
+
   return (
     <main className="font-brand">
       <div className="rounded-t-[42px] w-100% lg:bg-hero-lg md:bg-hero-md sm:bg-hero-sm h-auto object-contain border-current mt-10 pb-32 pt-4">
