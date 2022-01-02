@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {ReactComponent as Logo} from '../../assets/svg/logo.svg'
-import {MdSearch} from 'react-icons/md'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 import {Link} from 'react-router-dom'
-import {getSearchedBreeds} from '../../data/data'
+import SearchCombobox from '../search-combobox/SearchCombobox'
+import {useSearchCats} from '../../hooks/use-search-cats'
 
 const images = [
   {
@@ -25,21 +25,9 @@ const images = [
 ]
 
 export default function Hero() {
-  const [searchResults, setSearchResults] = React.useState(null)
-  const [isLoading, setIsLoading] = React.useState(false)
   const [searchText, setSearchText] = React.useState('')
 
-  React.useEffect(() => {
-    if (!searchText.length) return
-    getSearchResults(searchText)
-  }, [searchText])
-
-  const getSearchResults = async (query: string) => {
-    setIsLoading(true)
-    const data = await getSearchedBreeds(query)
-    setSearchResults(data)
-    setIsLoading(false)
-  }
+  const {searchResults, isLoading} = useSearchCats(searchText)
 
   console.log({searchResults})
 
@@ -58,16 +46,11 @@ export default function Hero() {
           />
           <h2 className="text-white">Get to know more about your cat breed</h2>
           <div className="absolute mt-12">
-            <input
-              type="text"
-              className="relative rounded-[59px] h-16 placeholder:font-brand  placeholder:text-[18px] placeholder:text-[#291507] placeholder:pl-9 min-w-[400px]"
-              placeholder="Enter your breed"
-              value={searchText}
-              onChange={e => setSearchText(e.target.value)}
+            <SearchCombobox
+              searchText={searchText}
+              setSearchText={setSearchText}
+              searchResults={searchResults}
             />
-            <i className="relative bottom-11 left-[11.5em]">
-              <MdSearch style={{color: '#291507'}} />
-            </i>
           </div>
         </div>
       </div>
