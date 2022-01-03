@@ -7,3 +7,7 @@ export const getAllBreeds = async () => {
 export const getSearchedBreeds = async (query: string) => {
   return await fetcher(`${URL}/search?q=${query}`)
 }
+
+export const getBreedByID = async (id: string) => {
+  return await fetcher(`${URL}/${id}`)
+}

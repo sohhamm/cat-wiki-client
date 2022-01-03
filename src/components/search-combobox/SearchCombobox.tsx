@@ -9,6 +9,7 @@ import {
 } from '@reach/combobox'
 import '@reach/combobox/styles.css'
 import {MdSearch} from 'react-icons/md'
+import {useNavigate} from 'react-router-dom'
 
 interface SearchComboboxProps {
   searchResults: Array<any> | null
@@ -21,7 +22,8 @@ export default function SearchCombobox({
   searchText,
   setSearchText,
 }: SearchComboboxProps) {
-  console.log(searchResults, 'combobox')
+  const navigate = useNavigate()
+
   return (
     <Combobox aria-label="Cats">
       <ComboboxInput
@@ -35,11 +37,17 @@ export default function SearchCombobox({
         <MdSearch style={{color: '#291507'}} />
       </i>
       {searchResults && (
-        <ComboboxPopover className="shadow-popup">
+        <ComboboxPopover className="shadow-popup max-h-[220px] overflow-y-scroll rounded-[24px] mt-5">
           {searchResults.length > 0 ? (
             <ComboboxList>
               {searchResults.map(cat => {
-                return <ComboboxOption key={cat.id} value={cat.name} />
+                return (
+                  <ComboboxOption
+                    key={cat.id}
+                    value={cat.name}
+                    onClick={() => navigate(`/breeds/${cat.id}`)}
+                  />
+                )
               })}
             </ComboboxList>
           ) : (
