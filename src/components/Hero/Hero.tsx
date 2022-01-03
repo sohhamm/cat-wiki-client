@@ -29,7 +29,7 @@ export default function Hero() {
 
   const {searchResults, isLoading} = useSearchCats(searchText)
 
-  console.log({searchResults})
+  // console.log({searchResults})
 
   return (
     <main className="font-brand">

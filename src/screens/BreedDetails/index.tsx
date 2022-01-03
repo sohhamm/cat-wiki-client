@@ -28,7 +28,9 @@ export default function BreedDetails() {
         />
 
         <div className="flex flex-col gap-y-[25px] text-[16px]">
-          <div className="font-bold text-[32px]">{breed.name}</div>
+          <div className="font-semi-bold text-[32px] color-[#291507]">
+            {breed.name}
+          </div>
           <div className="text-[18px]">{breed.description}</div>
           <div className="text">
             <span className="font-bold"> Temperament:</span>
@@ -78,7 +80,9 @@ export default function BreedDetails() {
       </div>
 
       <div className="px-[80px] w-[100vw] mt-[90px]">
-        <h1 className="text-[36px] font-semi-bold mb-[40px]">Other Photos</h1>
+        <h1 className="text-[36px] font-semi-bold mb-[40px] color-[#291507]">
+          Other Photos
+        </h1>
         <div className="flex flex-wrap gap-[24px]">
           {images.map((image: any) => (
             <div>

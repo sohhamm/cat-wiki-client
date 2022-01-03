@@ -5,11 +5,11 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionText,
 } from '@reach/combobox'
 import '@reach/combobox/styles.css'
 import {MdSearch} from 'react-icons/md'
 import {useNavigate} from 'react-router-dom'
+import {incrementSearchCount} from '../../data/data'
 
 interface SearchComboboxProps {
   searchResults: Array<any> | null
@@ -22,7 +22,22 @@ export default function SearchCombobox({
   searchText,
   setSearchText,
 }: SearchComboboxProps) {
+  const [lastSearched, setLastSearched] = React.useState<string | null>(null)
   const navigate = useNavigate()
+
+  // * feature for storing most popular breeds in this site, server is maintaining the count for every successful(single match) search and then increments it
+  React.useEffect(() => {
+    if (!searchResults) return
+    if (searchResults.length > 1) return
+    if (lastSearched && lastSearched.includes(searchText.toLowerCase())) return
+    incrementSearchCount(searchText).then(res => setLastSearched(res.name))
+  }, [searchResults])
+
+  React.useEffect(() => {
+    if (searchText.length === 0) setLastSearched(null)
+  }, [searchText])
+
+  console.log({lastSearched})
 
   return (
     <Combobox aria-label="Cats">

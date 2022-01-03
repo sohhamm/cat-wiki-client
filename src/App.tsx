@@ -2,10 +2,10 @@ import Home from './screens/Home'
 import BreedDetails from './screens/BreedDetails'
 import Header from './layout/Header/Header'
 import NotFound from './screens/NotFound'
+import Footer from './layout/Footer/Footer'
+import TopBreeds from './screens/TopBreeds'
 import {Routes, Route} from 'react-router-dom'
 import './App.css'
-import Breeds from './screens/Breeds'
-import Footer from './layout/Footer/Footer'
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/breeds" element={<Breeds />} />
+        <Route path="/breeds" element={<TopBreeds />} />
         <Route path="/breeds/:id" element={<BreedDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
