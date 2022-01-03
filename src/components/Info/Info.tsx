@@ -13,7 +13,7 @@ export default function Info() {
         <h1 className="text-brand text-[48px] font-bold leading-[60px] mb-12">
           Why should you have a cat?
         </h1>
-        <h3 className="text-[18px] text-brand mb-14">
+        <h3 className="text-[18px] text-brand mb-14 tracking-normal">
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety levels
         </h3>
