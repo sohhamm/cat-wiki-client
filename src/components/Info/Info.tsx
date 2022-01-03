@@ -17,11 +17,15 @@ export default function Info() {
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety levels
         </h3>
-        <Link to="/breeds">
+        <a
+          href="https://www.mentalfloss.com/article/51154/10-scientific-benefits-being-cat-owner"
+          target="_blank"
+          className="cursor-pointer"
+        >
           <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom">
             READ MORE <HiOutlineArrowNarrowRight className="ml-2" />
           </p>
-        </Link>
+        </a>
       </div>
 
       <div className="flex gap-12">

@@ -13,5 +13,9 @@ export const getBreedByID = async (id: string) => {
 }
 
 export const incrementSearchCount = async (searchQuery: string) => {
-  return await fetcher(`${URL}/top-breeds`, 'post', {name: searchQuery})
+  return await fetcher(`${URL}/top-breeds`, 'post', {id: searchQuery})
+}
+
+export const getMostPopularBreeds = async (limit?: number) => {
+  return await fetcher(`${URL}/top-breeds?limit=${limit}`)
 }

@@ -1,9 +1,10 @@
 import * as React from 'react'
 import {ReactComponent as Logo} from '../../assets/svg/logo.svg'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import SearchCombobox from '../search-combobox/SearchCombobox'
 import {useSearchCats} from '../../hooks/use-search-cats'
+import {getMostPopularBreeds} from '../../data/data'
 
 const images = [
   {
@@ -26,10 +27,14 @@ const images = [
 
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
-
+  const [mostPopularBreeds, setMostPopularBreeds] = React.useState<any>(null)
   const {searchResults, isLoading} = useSearchCats(searchText)
+  const navigate = useNavigate()
 
-  // console.log({searchResults})
+  React.useEffect(() => {
+    let limit = 4
+    getMostPopularBreeds(limit).then(res => setMostPopularBreeds(res))
+  }, [])
 
   return (
     <main className="font-brand">
@@ -65,21 +70,25 @@ export default function Hero() {
             66+ Breeds For you <br /> to discover
           </h1>
           <Link to="/breeds">
-            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom">
+            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom cursor-pointer">
               SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
             </p>
           </Link>
         </div>
 
         <div className="flex flex-nowrap items-center justify-between mt-[46px] gap-14 ">
-          {images.map(image => (
-            <div key={image.name} className="">
+          {mostPopularBreeds?.map((cat: any) => (
+            <div
+              key={cat.id}
+              className="cursor-pointer"
+              onClick={() => navigate(`breeds/${cat.id}`)}
+            >
               <img
-                src={image.url}
-                className="rounded-[24px] min-w-[135px] min-h-[135px]"
+                src={cat.url}
+                className="rounded-[24px] lg:w-[220px] lg:h-[220px] sm:w-[135px] sm:h-[135px] md:w-[170px] md:h-[170px] object-cover"
               />
               <figcaption className="text-[#291507 font-semibold text-xl mt-4 z-">
-                {image.name}
+                {cat.name}
               </figcaption>
             </div>
           ))}

@@ -11,8 +11,6 @@ export default function BreedDetails() {
     getBreedByID(id).then(res => setDetails(res))
   }, [])
 
-  console.log(details)
-
   if (!details) return <p>loading...</p>
 
   let breed = details.data

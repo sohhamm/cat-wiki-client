@@ -30,14 +30,14 @@ export default function SearchCombobox({
     if (!searchResults) return
     if (searchResults.length > 1) return
     if (lastSearched && lastSearched.includes(searchText.toLowerCase())) return
-    incrementSearchCount(searchText).then(res => setLastSearched(res.name))
+    incrementSearchCount(searchResults[0].id).then(res =>
+      setLastSearched(res.name),
+    )
   }, [searchResults])
 
   React.useEffect(() => {
     if (searchText.length === 0) setLastSearched(null)
   }, [searchText])
-
-  console.log({lastSearched})
 
   return (
     <Combobox aria-label="Cats">
