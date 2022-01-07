@@ -25,10 +25,12 @@ export default function SearchCombobox({
   const [lastSearched, setLastSearched] = React.useState<string | null>(null)
   const navigate = useNavigate()
 
+  console.log(searchResults)
+
   // * feature for storing most popular breeds in this site, server is maintaining the count for every successful(single match) search and then increments it
   React.useEffect(() => {
     if (!searchResults) return
-    if (searchResults.length > 1) return
+    if (searchResults.length > 1 || searchResults.length === 0) return
     if (lastSearched && lastSearched.includes(searchText.toLowerCase())) return
     incrementSearchCount(searchResults[0].id).then(res =>
       setLastSearched(res.name),
