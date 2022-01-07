@@ -7,13 +7,13 @@ import Img3 from '../../assets/png/img-3.png'
 
 export default function Info() {
   return (
-    <div className="flex items-center mt-28">
-      <div className="max-w-[50%] mr-10 px-24">
+    <div className="flex flex-col md:flex-row items-center mt-28 ">
+      <div className="w-[100%] md:max-w-[50%] mr-10 pl-[18px] md:px-24">
         <div className="h-1 w-[68px] mb-4 bg-[#4D270C]" />
-        <h1 className="text-brand text-[48px] font-bold leading-[60px] mb-12">
+        <h1 className="text-brand text-[40px] md:text-[48px] font-bold leading-[48px] md:leading-[60px] mb-[42px] md:mb-12">
           Why should you have a cat?
         </h1>
-        <h3 className="text-[18px] text-brand mb-14 tracking-normal">
+        <h3 className="text-[18px] text-brand mb-[27px] md:mb-14 tracking-normal">
           Having a cat around you can actually trigger the release of calming
           chemicals in your body which lower your stress and anxiety levels
         </h3>
@@ -22,7 +22,7 @@ export default function Info() {
           target="_blank"
           className="cursor-pointer"
         >
-          <p className="flex items-center text-[#29150799] text-[0.7em] font-bold">
+          <p className="flex items-center text-[#29150799] text-[0.7em] font-bold mb-[64px] md:mb-0">
             READ MORE <HiOutlineArrowNarrowRight className="ml-2" />
           </p>
         </a>
