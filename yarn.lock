@@ -243,6 +243,11 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
+"@fontsource/montserrat@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.1.tgz#64a33ffdb77bbc63484c0321710bed272cc5b16f"
+  integrity sha512-xdMkzsnFlzDt5Vj9+AWuUp4Vd9F3hYN2I0GTZZYscWN/bQ20wVOGtdWLO8Okfv7SZ9t/z39/EayAAt+f/8tAvw==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

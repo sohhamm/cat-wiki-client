@@ -17,11 +17,15 @@ export const useSearchCats: SearchCatsType = searchText => {
     clearTimeout(timer.current)
     timer.current = setTimeout(() => {
       getSearchResults(searchText)
-    }, 600)
+    }, 400)
 
     return () => {
       clearTimeout(timer.current)
     }
+  }, [searchText])
+
+  React.useEffect(() => {
+    if (searchText.length === 0) setSearchResults(null)
   }, [searchText])
 
   const getSearchResults = async (query: string) => {

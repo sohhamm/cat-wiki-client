@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {useParams} from 'react-router-dom'
+import ImageProp from '../../components/image-prop/ImageProp'
 import StatsMarker from '../../components/stats-marker/StatsMarker'
 import {getBreedByID} from '../../data/data'
 
@@ -19,11 +20,14 @@ export default function BreedDetails() {
   return (
     <div className="mt-10 ">
       <div className="flex justify-center gap-[100px] pl-14 pr-24">
-        <img
-          src={breed.url}
-          alt="Cat Image"
-          className="w-[320px] h-[320px] object-cover rounded-[24px]"
-        />
+        <div className="relative">
+          <ImageProp isBreedDetails={true} />
+          <img
+            src={breed.url}
+            alt="Cat Image"
+            className="w-[100%%] object-cover rounded-[24px] z-30 relative"
+          />
+        </div>
 
         <div className="flex flex-col gap-y-[25px] text-[16px]">
           <div className="font-semi-bold text-[32px] color-[#291507]">
@@ -36,7 +40,7 @@ export default function BreedDetails() {
           </div>
           <div className="text">
             <span className="font-bold"> Origin:</span>
-            {breed.origin}
+            {' ' + breed.origin}
           </div>
           <div className="text">
             <span className="font-bold"> Lifespan:</span>

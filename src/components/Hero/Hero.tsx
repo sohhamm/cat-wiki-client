@@ -65,12 +65,12 @@ export default function Hero() {
           Most Searched Breed <div className="h-1 w-[60px] bg-[#4D270C]" />
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-end">
           <h1 className="text-[48px] leading-[60px] font-bold text-[#291507]">
             66+ Breeds For you <br /> to discover
           </h1>
           <Link to="/breeds">
-            <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom cursor-pointer">
+            <p className="flex items-center text-[#29150799] text-[0.7em] font-bold cursor-pointer">
               SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
             </p>
           </Link>

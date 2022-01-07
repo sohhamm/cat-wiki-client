@@ -22,7 +22,7 @@ export default function Info() {
           target="_blank"
           className="cursor-pointer"
         >
-          <p className="flex items-center color-[rgba(41, 21, 7, 0.6)] text-[18px] align-bottom">
+          <p className="flex items-center text-[#29150799] text-[0.7em] font-bold">
             READ MORE <HiOutlineArrowNarrowRight className="ml-2" />
           </p>
         </a>

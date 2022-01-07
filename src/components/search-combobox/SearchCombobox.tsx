@@ -25,8 +25,6 @@ export default function SearchCombobox({
   const [lastSearched, setLastSearched] = React.useState<string | null>(null)
   const navigate = useNavigate()
 
-  console.log(searchResults)
-
   // * feature for storing most popular breeds in this site, server is maintaining the count for every successful(single match) search and then increments it
   React.useEffect(() => {
     if (!searchResults) return
@@ -45,12 +43,12 @@ export default function SearchCombobox({
     <Combobox aria-label="Cats">
       <ComboboxInput
         type="text"
-        className="relative rounded-[59px] h-16 placeholder:font-brand placeholder:align-text-top  placeholder:text-[18px] placeholder:text-[#291507] placeholder:pl-9 w-96"
+        className="relative rounded-[59px] py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-9  placeholder:my-4 w-96"
         placeholder="Enter your breed"
         value={searchText}
         onChange={e => setSearchText(e.target.value)}
       />
-      <i className="absolute bottom-5 right-8">
+      <i className="absolute bottom-4 right-8">
         <MdSearch style={{color: '#291507'}} />
       </i>
       {searchResults && (

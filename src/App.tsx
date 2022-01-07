@@ -9,7 +9,7 @@ import './App.css'
 
 export default function App() {
   return (
-    <div className="text-3xl px-24 py-5 tracking-wide">
+    <div className="text-3xl px-24 py-5 ">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
