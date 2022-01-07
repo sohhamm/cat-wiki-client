@@ -46,7 +46,7 @@ export default function SearchCombobox({
       <label className="relative">
         <ComboboxInput
           type="text"
-          className="relative rounded-[59px] md:py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-4 md:placeholder:pl-9 placeholder:text-[12px] placeholder:font-medium  md:placeholder:text-inherit placeholder:my-4 w-[96px] md:w-96"
+          className="relative rounded-[59px] py-1 md:py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-4 md:placeholder:pl-9 placeholder:text-[12px] placeholder:font-medium  md:placeholder:text-inherit placeholder:my-4 w-[96px] md:w-96"
           placeholder={width < 470 ? 'Search' : 'Enter your breed'}
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
