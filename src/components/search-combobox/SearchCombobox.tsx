@@ -43,13 +43,16 @@ export default function SearchCombobox({
     <Combobox aria-label="Cats">
       <ComboboxInput
         type="text"
-        className="relative rounded-[59px] py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-9  placeholder:my-4 w-96"
+        className="relative rounded-[59px] md:py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-4 md:placeholder:pl-9  placeholder:my-4 w-40 md:w-96"
         placeholder="Enter your breed"
         value={searchText}
         onChange={e => setSearchText(e.target.value)}
       />
-      <i className="absolute bottom-4 right-8">
-        <MdSearch style={{color: '#291507'}} />
+      <i className="absolute left-[7em] md:bottom-4 md:right-8">
+        <MdSearch
+          // style={{color: 'white'}}
+          style={{color: '#291507'}}
+        />
       </i>
       {searchResults && (
         <ComboboxPopover className="shadow-popup max-h-[220px] overflow-y-scroll rounded-[24px] mt-5">
