@@ -1,10 +1,11 @@
 import * as React from 'react'
-import {ReactComponent as Logo} from '../../assets/svg/logo.svg'
+import Logo from '../../assets/svg/logo.svg'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 import {Link, useNavigate} from 'react-router-dom'
 import SearchCombobox from '../search-combobox/SearchCombobox'
 import {useSearchCats} from '../../hooks/use-search-cats'
 import {getMostPopularBreeds} from '../../data/data'
+import ImageProp from '../image-prop/ImageProp'
 
 const images = [
   {
@@ -38,19 +39,18 @@ export default function Hero() {
 
   return (
     <main className="font-brand">
-      <div className="rounded-t-[42px] w-100% lg:bg-hero-lg md:bg-hero-md sm:bg-hero-sm h-auto object-contain border-current mt-10 pb-32 pt-4">
-        <div className="flex-col ml-24 items-center py-24 mt-8 max-w-[400px]">
-          <Logo
-            width={'340'}
-            height={'200'}
+      <div className="rounded-t-[42px] w-100%  lg:bg-hero-lg md:bg-hero-md sm:bg-hero-sm h-[40vw]  bg-[length:100%_100%] border-current mt-10 pb-32 pt-4">
+        <div className="flex-col ml-24 items-center py-24 my-auto max-w-[400px] justify-center">
+          <img
+            src={Logo}
+            className="fill-white w-[340px] h-[200px] -mb-8"
             style={{
-              color: 'white',
+              filter:
+                'invert(100%) sepia(0%) saturate(1%) hue-rotate(211deg) brightness(106%) contrast(101%)',
             }}
-            stroke="currentColor"
-            fill="#fffff"
           />
           <h2 className="text-white">Get to know more about your cat breed</h2>
-          <div className="absolute mt-12">
+          <div className="relative mt-12">
             <SearchCombobox
               searchText={searchText}
               setSearchText={setSearchText}
@@ -76,11 +76,12 @@ export default function Hero() {
           </Link>
         </div>
 
-        <div className="flex flex-nowrap items-center justify-between mt-[46px] gap-14 ">
+        <div className="flex flex-nowrap items-center justify-between mt-[46px] gap-14 relative">
+          <ImageProp />
           {mostPopularBreeds?.map((cat: any) => (
             <div
               key={cat.id}
-              className="cursor-pointer"
+              className="cursor-pointer z-20"
               onClick={() => navigate(`breeds/${cat.id}`)}
             >
               <img

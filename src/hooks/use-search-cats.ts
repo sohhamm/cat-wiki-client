@@ -9,10 +9,19 @@ type SearchCatsType = (searchText: string) => {
 export const useSearchCats: SearchCatsType = searchText => {
   const [searchResults, setSearchResults] = React.useState<any[] | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
+  const timer = React.useRef<number | undefined>()
 
+  // * debounced api calls
   React.useEffect(() => {
     if (!searchText.length) return
-    getSearchResults(searchText)
+    clearTimeout(timer.current)
+    timer.current = setTimeout(() => {
+      getSearchResults(searchText)
+    }, 600)
+
+    return () => {
+      clearTimeout(timer.current)
+    }
   }, [searchText])
 
   const getSearchResults = async (query: string) => {

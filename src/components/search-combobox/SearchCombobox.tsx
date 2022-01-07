@@ -43,12 +43,12 @@ export default function SearchCombobox({
     <Combobox aria-label="Cats">
       <ComboboxInput
         type="text"
-        className="relative rounded-[59px] h-16 placeholder:font-brand  placeholder:text-[18px] placeholder:text-[#291507] placeholder:pl-9 min-w-[400px]"
+        className="relative rounded-[59px] h-16 placeholder:font-brand placeholder:align-text-top  placeholder:text-[18px] placeholder:text-[#291507] placeholder:pl-9 w-96"
         placeholder="Enter your breed"
         value={searchText}
         onChange={e => setSearchText(e.target.value)}
       />
-      <i className="relative bottom-11 left-[11.5em]">
+      <i className="absolute bottom-5 right-8">
         <MdSearch style={{color: '#291507'}} />
       </i>
       {searchResults && (
