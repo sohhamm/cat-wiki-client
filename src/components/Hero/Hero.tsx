@@ -40,7 +40,7 @@ export default function Hero() {
   return (
     <main className="font-brand">
       <div className="rounded-t-[42px] w-100%  bg-hero-sm md:bg-hero-md lg:bg-hero-lg  h-[180px] lg:h-[40vw] bg-[length:100%_100%] border-current mt-[45px] md:mt-10 pb-32 pt-4">
-        <div className="flex-col ml-[47px] md:ml-24 items-center md:py-24 my-auto max-w-[400px] justify-center">
+        <div className="flex-col ml-[47px] md:ml-24 items-center md:py-24 my-auto md:max-w-[400px] justify-center">
           <img
             src={Logo}
             className="fill-white md:w-[340px] md:h-[200px] md:-mb-8"
@@ -49,7 +49,9 @@ export default function Hero() {
                 'invert(100%) sepia(0%) saturate(1%) hue-rotate(211deg) brightness(106%) contrast(101%)',
             }}
           />
-          <h2 className="text-white">Get to know more about your cat breed</h2>
+          <h2 className="text-white text-[10px] md:text-[1em]">
+            Get to know more about your cat breed
+          </h2>
           <div className="relative mt-12">
             <SearchCombobox
               searchText={searchText}

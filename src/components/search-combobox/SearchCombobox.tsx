@@ -10,6 +10,7 @@ import '@reach/combobox/styles.css'
 import {MdSearch} from 'react-icons/md'
 import {useNavigate} from 'react-router-dom'
 import {incrementSearchCount} from '../../data/data'
+import {useWindowSize} from '../../hooks/use-window-size'
 
 interface SearchComboboxProps {
   searchResults: Array<any> | null
@@ -24,6 +25,7 @@ export default function SearchCombobox({
 }: SearchComboboxProps) {
   const [lastSearched, setLastSearched] = React.useState<string | null>(null)
   const navigate = useNavigate()
+  const {width} = useWindowSize()
 
   // * feature for storing most popular breeds in this site, server is maintaining the count for every successful(single match) search and then increments it
   React.useEffect(() => {
@@ -41,19 +43,21 @@ export default function SearchCombobox({
 
   return (
     <Combobox aria-label="Cats">
-      <ComboboxInput
-        type="text"
-        className="relative rounded-[59px] md:py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-4 md:placeholder:pl-9  placeholder:my-4 w-40 md:w-96"
-        placeholder="Enter your breed"
-        value={searchText}
-        onChange={e => setSearchText(e.target.value)}
-      />
-      <i className="absolute left-[7em] md:bottom-4 md:right-8">
-        <MdSearch
-          // style={{color: 'white'}}
-          style={{color: '#291507'}}
+      <label className="relative">
+        <ComboboxInput
+          type="text"
+          className="relative rounded-[59px] md:py-3 placeholder:font-brand placeholder:tracking-wide  placeholder:py-4 placeholder:text-[#291507] placeholder:pl-4 md:placeholder:pl-9 placeholder:text-[12px] placeholder:font-medium  md:placeholder:text-inherit placeholder:my-4 w-[96px] md:w-96"
+          placeholder={width < 470 ? 'Search' : 'Enter your breed'}
+          value={searchText}
+          onChange={e => setSearchText(e.target.value)}
         />
-      </i>
+        <i className="absolute right-1 bottom-1">
+          <MdSearch
+            // style={{color: 'white'}}
+            style={{color: '#291507'}}
+          />
+        </i>
+      </label>
       {searchResults && (
         <ComboboxPopover className="shadow-popup max-h-[220px] overflow-y-scroll rounded-[24px] mt-5">
           {searchResults.length > 0 ? (
