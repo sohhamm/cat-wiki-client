@@ -18,12 +18,14 @@ interface SearchComboboxProps {
   searchResults: Array<any> | null
   searchText: string
   setSearchText: React.Dispatch<React.SetStateAction<string>>
+  isLoading: boolean
 }
 
 export default function SearchCombobox({
   searchResults,
   searchText,
   setSearchText,
+  isLoading,
 }: SearchComboboxProps) {
   const [lastSearched, setLastSearched] = React.useState<string | null>(null)
   const [showDialog, setShowDialog] = React.useState(false)
@@ -86,15 +88,14 @@ export default function SearchCombobox({
           onChange={e => setSearchText(e.target.value)}
         />
         <i className="absolute right-4 bottom-[0.1em]">
-          <MdSearch
-            // style={{color: 'white'}}
-            style={{color: '#291507'}}
-          />
+          <MdSearch style={{color: '#291507'}} />
         </i>
       </label>
-      {searchResults && (
+      {
         <ComboboxPopover className="shadow-popup max-h-[220px] overflow-y-scroll rounded-[24px] mt-5">
-          {searchResults.length > 0 ? (
+          {!searchResults || isLoading ? (
+            <span className="block m-[8px]">fetching results...</span>
+          ) : searchResults.length > 0 ? (
             <ComboboxList>
               {searchResults.map(cat => {
                 return (
@@ -110,7 +111,7 @@ export default function SearchCombobox({
             <span className="block m-[8px]">No results found</span>
           )}
         </ComboboxPopover>
-      )}
+      }
     </Combobox>
   )
 }

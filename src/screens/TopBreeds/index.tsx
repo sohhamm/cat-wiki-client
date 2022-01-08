@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Loader from '../../components/loader/Loader'
 import {useNavigate} from 'react-router-dom'
 import {getMostPopularBreeds} from '../../data/data'
 import {useWindowSize} from '../../hooks/use-window-size'
@@ -24,7 +23,9 @@ export default function TopBreeds() {
       </h1>
 
       {!breeds ? (
-        <Loader />
+        <p className="text-center w-[100%] my-[30vh]">
+          getting the most searched breeds...
+        </p>
       ) : (
         <div className="flex flex-col gap-y-[54px]">
           {breeds?.map((breed: any, idx: number) => (

@@ -1,12 +1,13 @@
 import * as React from 'react'
 import Logo from '../../assets/svg/logo.svg'
+import ImageProp from '../image-prop/ImageProp'
+import SearchCombobox from '../search-combobox/SearchCombobox'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 import {Link, useNavigate} from 'react-router-dom'
-import SearchCombobox from '../search-combobox/SearchCombobox'
 import {useSearchCats} from '../../hooks/use-search-cats'
 import {getMostPopularBreeds} from '../../data/data'
-import ImageProp from '../image-prop/ImageProp'
 import {useWindowSize} from '../../hooks/use-window-size'
+import {getLimit} from '../../utils'
 
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
@@ -18,14 +19,14 @@ export default function Hero() {
 
   React.useEffect(() => {
     if (width) {
-      let limit = sm ? 3 : 4
+      let limit = getLimit(width)
       getMostPopularBreeds(limit).then(res => setMostPopularBreeds(res))
     }
   }, [width])
 
   return (
     <main className="font-brand">
-      <div className="rounded-t-[42px] w-100%  bg-hero-sm md:bg-hero-md lg:bg-hero-lg  h-[180px] lg:h-[40vw] bg-[length:100%_100%] border-current mt-[20px] md:mt-10 pb-32 pt-4">
+      <div className="rounded-t-[42px] w-100%  bg-hero-sm md:bg-hero-md lg:bg-hero-lg md:h-[auto] h-[180px] lg:h-[40vw] bg-[length:100%_100%] border-current mt-[20px] md:mt-10 pb-32 pt-4">
         <div className="flex-col mt-0 ml-[20px] md:ml-24 items-center md:py-24 my-auto md:max-w-[400px] justify-center">
           <img
             src={Logo}
@@ -43,6 +44,7 @@ export default function Hero() {
               searchText={searchText}
               setSearchText={setSearchText}
               searchResults={searchResults}
+              isLoading={isLoading}
             />
           </div>
         </div>
