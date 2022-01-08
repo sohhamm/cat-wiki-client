@@ -33,16 +33,17 @@ export default function Hero() {
   const {searchResults, isLoading} = useSearchCats(searchText)
   const navigate = useNavigate()
   const {width} = useWindowSize()
+  const sm = width < 640
 
   React.useEffect(() => {
-    let limit = 4
+    let limit = sm ? 3 : 4
     getMostPopularBreeds(limit).then(res => setMostPopularBreeds(res))
   }, [])
 
   return (
     <main className="font-brand">
-      <div className="rounded-t-[42px] w-100%  bg-hero-sm md:bg-hero-md lg:bg-hero-lg  h-[180px] lg:h-[40vw] bg-[length:100%_100%] border-current mt-[45px] md:mt-10 pb-32 pt-4">
-        <div className="flex-col mt-0 ml-[47px] md:ml-24 items-center md:py-24 my-auto md:max-w-[400px] justify-center">
+      <div className="rounded-t-[42px] w-100%  bg-hero-sm md:bg-hero-md lg:bg-hero-lg  h-[180px] lg:h-[40vw] bg-[length:100%_100%] border-current mt-[20px] md:mt-10 pb-32 pt-4">
+        <div className="flex-col mt-0 ml-[20px] md:ml-24 items-center md:py-24 my-auto md:max-w-[400px] justify-center">
           <img
             src={Logo}
             className="fill-white h-[30px] md:w-[340px] md:h-[200px] mb-3 md:-mb-8"
@@ -64,24 +65,35 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="rounded-b-[42px] bg-[#E3E1DC] px-[100px] pb-[98px]">
-        <div className="text-md py-[47px] text-[18px] font-medium">
-          Most Searched Breed <div className="h-1 w-[60px] bg-[#4D270C]" />
-        </div>
+      <div className="rounded-b-[42px] bg-[#E3E1DC] px-[1em] md:px-[100px] pb-[53px] mb:pb-[98px]">
+        {sm ? (
+          <div className="flex items-end justify-between text-md pt-[19px] text-[12px] font-medium mb-[18px]">
+            <div>
+              Most Searched Breed{' '}
+              <div className="h-1 w-[30px] bg-[#4D270C] rounded-lg" />
+            </div>
+          </div>
+        ) : (
+          <div className="text-md py-[47px] text-[12px] md:text-[18px] font-medium">
+            Most Searched Breed <div className="h-1 w-[60px] bg-[#4D270C]" />
+          </div>
+        )}
 
         <div className="flex justify-between items-end">
-          <h1 className="text-5xl leading-[60px] font-bold text-[#291507]">
+          <h1 className="text-[18px] md:text-5xl  leading-[20px] md:leading-[60px] font-bold text-[#291507]">
             66+ Breeds For you <br /> to discover
           </h1>
-          <Link to="/breeds">
-            <p className="flex items-center text-[#29150799] text-[0.7em] font-bold cursor-pointer">
-              SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
-            </p>
-          </Link>
+          {!sm && (
+            <Link to="/breeds">
+              <p className="flex items-center text-[#29150799] text-[0.7em] font-bold cursor-pointer">
+                SEE MORE <HiOutlineArrowNarrowRight className="ml-2" />
+              </p>
+            </Link>
+          )}
         </div>
 
-        <div className="flex flex-nowrap items-center justify-between mt-[46px] gap-14 relative">
-          <ImageProp />
+        <div className="flex flex-wrap md:flex-nowrap items-center justify-between mt-[26px] md:mt-[46px] gap-[13px] md:gap-14 relative">
+          <ImageProp sm={sm} width={width} />
           {mostPopularBreeds?.map((cat: any) => (
             <div
               key={cat.id}
@@ -90,9 +102,11 @@ export default function Hero() {
             >
               <img
                 src={cat.url}
-                className="rounded-[24px] lg:w-[220px] lg:h-[220px] sm:w-[135px] sm:h-[135px] md:w-[170px] md:h-[170px] object-cover"
+                className={`rounded-[24px] ${
+                  width < 384 ? 'w-[105px] h-[105px]' : 'w-[135px] h-[135px]'
+                } md:w-[220px] md:h-[220px]  object-cover`}
               />
-              <figcaption className="text-[#291507 font-semibold text-xl mt-4 z-">
+              <figcaption className="text-[#291507] font-semibold text-[12px] md:text-xl mt-[2px] md:mt-4">
                 {cat.name}
               </figcaption>
             </div>

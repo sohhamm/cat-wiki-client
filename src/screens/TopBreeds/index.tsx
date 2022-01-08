@@ -1,13 +1,22 @@
 import * as React from 'react'
 import Loader from '../../components/loader/Loader'
+import {useNavigate} from 'react-router-dom'
 import {getMostPopularBreeds} from '../../data/data'
+import {useWindowSize} from '../../hooks/use-window-size'
 
 export default function TopBreeds() {
   const [breeds, setBreeds] = React.useState<any | null>(null)
+  let navigate = useNavigate()
+  let {width} = useWindowSize()
+
+  React.useLayoutEffect(() => {
+    if (width < 500) navigate('/', {replace: true})
+  }, [width])
 
   React.useEffect(() => {
     getMostPopularBreeds(9).then(res => setBreeds(res))
   }, [])
+
   return (
     <div className="mt-[40px] mb-[106px]">
       <h1 className="font-bold text-[36px] color-[#291507] mb-[52px]">
@@ -19,7 +28,7 @@ export default function TopBreeds() {
       ) : (
         <div className="flex flex-col gap-y-[54px]">
           {breeds?.map((breed: any, idx: number) => (
-            <div className="flex items-center  gap-x-[46px]">
+            <div key={breed.id} className="flex items-center  gap-x-[46px]">
               <img
                 src={breed.url}
                 alt={breed.name}
