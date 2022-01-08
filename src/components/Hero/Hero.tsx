@@ -35,7 +35,7 @@ export default function Hero() {
                 'invert(100%) sepia(0%) saturate(1%) hue-rotate(211deg) brightness(106%) contrast(101%)',
             }}
           />
-          <h2 className="text-white text-[10px] md:text-[1em] leading-3">
+          <h2 className="text-white text-[10px] md:text-[1em] leading-3 md:leading-[30px]">
             Get to know more about {width < 470 ? <br /> : ''}your cat breed
           </h2>
           <div className="relative mt-[18px] md:mt-12">
@@ -77,23 +77,38 @@ export default function Hero() {
 
         <div className="flex flex-wrap md:flex-nowrap items-center justify-between mt-[26px] md:mt-[46px] gap-[13px] md:gap-14 relative">
           <ImageProp sm={sm} width={width} />
-          {mostPopularBreeds?.map((cat: any) => (
-            <div
-              key={cat.id}
-              className="cursor-pointer z-20"
-              onClick={() => navigate(`breeds/${cat.id}`)}
-            >
-              <img
-                src={cat.url}
-                className={`rounded-[24px] ${
-                  width < 384 ? 'w-[105px] h-[105px]' : 'w-[135px] h-[135px]'
-                } md:w-[220px] md:h-[220px]  object-cover`}
-              />
-              <figcaption className="text-[#291507] font-semibold text-[12px] md:text-xl mt-[2px] md:mt-4">
-                {cat.name}
-              </figcaption>
-            </div>
-          ))}
+          {mostPopularBreeds
+            ? mostPopularBreeds.map((cat: any) => (
+                <div
+                  key={cat.id}
+                  className="cursor-pointer z-20"
+                  onClick={() => navigate(`breeds/${cat.id}`)}
+                >
+                  <img
+                    src={cat.url}
+                    className={`rounded-[24px] ${
+                      width < 384
+                        ? 'w-[105px] h-[105px]'
+                        : 'w-[135px] h-[135px]'
+                    } md:w-[220px] md:h-[220px] object-cover`}
+                  />
+                  <figcaption className="text-[#291507] font-semibold text-[12px] md:text-xl mt-[2px] md:mt-4">
+                    {cat.name}
+                  </figcaption>
+                </div>
+              ))
+            : Array(sm ? 4 : 5)
+                .fill(0)
+                .map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`animate-pulse rounded-[24px] ${
+                      width < 384
+                        ? 'w-[105px] h-[105px]'
+                        : 'w-[135px] h-[135px]'
+                    } md:w-[220px] md:h-[220px] bg-gray-500 z-20`}
+                  ></div>
+                ))}
         </div>
       </div>
     </main>
