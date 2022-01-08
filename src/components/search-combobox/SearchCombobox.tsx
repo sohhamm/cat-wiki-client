@@ -46,20 +46,20 @@ export default function SearchCombobox({
     if (searchText.length === 0) setLastSearched(null)
   }, [searchText])
 
+  const handleOpenSearchDialog = () => {
+    open()
+  }
+
   if (width < 640)
     return (
       <>
         <button
           className="rounded-[59px] relative bg-white py-1 font-brand tracking-wide text-[#291507] text-[13px] font-medium w-[96px]"
-          onClick={() => setShowDialog(true)}
+          onClick={handleOpenSearchDialog}
         >
           <span className="mr-[20px]">Search</span>
           <i className="absolute right-2 top-2">
-            <MdSearch
-              style={{color: '#291507'}}
-              size={20}
-              // style={{color: 'white'}}
-            />
+            <MdSearch style={{color: '#291507'}} size={20} />
           </i>
         </button>
         <React.Suspense fallback={'loading...'}>

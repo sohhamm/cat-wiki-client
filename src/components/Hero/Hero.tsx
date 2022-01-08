@@ -8,25 +8,6 @@ import {getMostPopularBreeds} from '../../data/data'
 import ImageProp from '../image-prop/ImageProp'
 import {useWindowSize} from '../../hooks/use-window-size'
 
-const images = [
-  {
-    name: 'Name 1',
-    url: 'https://picsum.photos/220',
-  },
-  {
-    name: 'Name 2',
-    url: 'https://picsum.photos/220',
-  },
-  {
-    name: 'Street',
-    url: 'https://picsum.photos/220',
-  },
-  {
-    name: 'Bengal',
-    url: 'https://picsum.photos/220',
-  },
-]
-
 export default function Hero() {
   const [searchText, setSearchText] = React.useState('')
   const [mostPopularBreeds, setMostPopularBreeds] = React.useState<any>(null)
@@ -36,9 +17,11 @@ export default function Hero() {
   const sm = width < 640
 
   React.useEffect(() => {
-    let limit = sm ? 3 : 4
-    getMostPopularBreeds(limit).then(res => setMostPopularBreeds(res))
-  }, [])
+    if (width) {
+      let limit = sm ? 3 : 4
+      getMostPopularBreeds(limit).then(res => setMostPopularBreeds(res))
+    }
+  }, [width])
 
   return (
     <main className="font-brand">

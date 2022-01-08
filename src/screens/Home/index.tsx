@@ -1,6 +1,5 @@
-import React from 'react'
 import Hero from '../../components/hero/Hero'
-import Info from '../../components/Info/Info'
+import Info from '../../components/info/Info'
 
 export default function Home() {
   return (
